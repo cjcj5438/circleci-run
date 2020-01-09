@@ -44,8 +44,7 @@ fi
 user="root"
 passwd="CHENjing@10502"
 
-host_list=("47.104.64.78"
-)
+host_list=("47.104.64.78")
 
 #seletc the host
 select host in ${host_list[@]}; do
@@ -53,16 +52,19 @@ select host in ${host_list[@]}; do
 done
 
 #execute the ssh action
+
+echo "开始连接服务器:"
 expect -c "
 spawn ssh $user@$host
 expect {
-\"yes\/no\" { send \"yes\n\"; exp_continue}
-\"password:\" { send \"$passwd\n\" }
+  \"yes\/no\" { send \"yes\n\"; exp_continue}
+  \"password:\" { send \"$passwd\n\" }
 }
 interact
 "
+echo "登录服务器成功"
 pwd
-cd /usr/local/nginx/html/
+cd /usr/local/nginx/htm
 
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
