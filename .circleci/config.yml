@@ -11,9 +11,19 @@ jobs:
           fingerprints:
             - "cc:ed:d9:34:e7:80:1a:68:2d:93:25:d4:5e:ec:f5:f9"
       - checkout
+      restore_cache:
+        keys:
+          - dependencies
       - run:
           name: Install
           command: yarn install
+      - save_cache:
+        key: dependencies
+        paths:
+          - node_modules
       - run:
-          name: build
-          command: yarn build
+        name: build
+        command: yarn build
+      - run:
+          name: Deploy
+          
