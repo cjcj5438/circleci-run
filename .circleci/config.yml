@@ -1,8 +1,21 @@
- version: 2
- jobs:
-   build:
-     docker:
-       - image: circleci/node:10
-     steps:
-       - run: echo "A first hello"
-       - run: npm -v
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+    branches:
+      only:
+        - master
+        - /rc-.*/
+      steps:
+        - add_ssh_keys:
+          fingerprints:
+            - "cc:ed:d9:34:e7:80:1a:68:2d:93:25:d4:5e:ec:f5:f9"
+        - checkout
+        - run: echo "A first hello"
+        - run: npm -v
+            name: Install
+            command: yarn install
+        - run:
+            name: build
+              command: yarn build
