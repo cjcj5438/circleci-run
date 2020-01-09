@@ -13,14 +13,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dependencies_imooc
+            - dependencies
       - run:
           name: Install
           command: yarn install
       - save_cache:
           paths:
             - node_modules
-          key: dependencies_imooc
+          key: dependencies
       - run:
           name: Build
           command: yarn build
