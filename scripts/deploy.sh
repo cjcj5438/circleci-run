@@ -36,6 +36,34 @@ else
   git checkout --orphan gh-pages
 fi
 
+#Description: auto login the remote server
+#Author:majinxu
+#Version:1.0
+#CreateTime:2018-3-012 18:34:41
+
+user="root"
+passwd="CHENjing@10502"
+
+host_list=("47.104.64.78"
+)
+
+#seletc the host
+select host in ${host_list[@]}; do
+  break
+done
+
+#execute the ssh action
+expect -c "
+spawn ssh $user@$host
+expect {
+\"yes\/no\" { send \"yes\n\"; exp_continue}
+\"password:\" { send \"$passwd\n\" }
+}
+interact
+"
+pwd
+cd /usr/local/nginx/html/
+
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
 
