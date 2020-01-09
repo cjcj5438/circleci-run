@@ -6,14 +6,14 @@ jobs:
     branches:
       only:
         - master
-      steps:
-        - add_ssh_keys:
-            fingerprints:
-              - "cc:ed:d9:34:e7:80:1a:68:2d:93:25:d4:5e:ec:f5:f9"
-        - checkout
-        - run:
-            name: Install
-            command: yarn install
-        - run:
-            name: build
-            command: yarn build
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "cc:ed:d9:34:e7:80:1a:68:2d:93:25:d4:5e:ec:f5:f9"
+      - checkout
+      - run:
+          name: Install
+          command: yarn install
+      - run:
+          name: build
+          command: yarn build
