@@ -12,10 +12,9 @@ jobs:
           fingerprints:
             - "cc:ed:d9:34:e7:80:1a:68:2d:93:25:d4:5e:ec:f5:f9"
         - checkout
-        - run: echo "A first hello"
-        - run: npm -v
+        - run:
             name: Install
             command: yarn install
         - run:
             name: build
-              command: yarn build
+            command: yarn build
