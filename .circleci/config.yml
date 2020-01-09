@@ -6,7 +6,6 @@ jobs:
     branches:
       only:
         - master
-        - /rc-.*/
       steps:
         - add_ssh_keys:
           fingerprints:
