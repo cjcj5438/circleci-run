@@ -15,6 +15,16 @@ jobs:
           keys:
             - dependencies
       - run:
+          name: Install
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies
+      - run:
+          name: Build
+          command: yarn build
+      - run:
           name: Prepare shell commands
           # shell chmod +x 赋予执行权限
           # 执行shell脚本
